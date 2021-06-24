@@ -5,13 +5,15 @@
 
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| aws | ~> 3.46.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
+| aws | ~> 3.46.0 |
 
 ## Modules
 
