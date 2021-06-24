@@ -1,3 +1,3 @@
 /**
- * # Route53 + Certificate Manager - Terraform Module
+ * Route53 + Certificate Manager - Terraform Module
  */
