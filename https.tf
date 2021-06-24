@@ -12,11 +12,19 @@ resource "aws_acm_certificate" "public" {
 
 
 resource "aws_route53_record" "certificate_validation" {
-  count = var.request_ssl_certificate ? 1 : 0
+  for_each = {
+    for option in aws_acm_certificate.public.domain_validation_options : option.domain_name => {
+      name   = option.resource_record_name
+      record = option.resource_record_value
+      type   = option.resource_record_type
+    }
+  }
 
-  zone_id = data.aws_route53_zone.public.id
-  name    = aws_acm_certificate.public[0].domain_validation_options[0].resource_record_name
-  type    = aws_acm_certificate.public[0].domain_validation_options[0].resource_record_type
-  ttl     = "300"
-  records = [aws_acm_certificate.public[0].domain_validation_options[0].resource_record_value]
+  allow_overwrite = true
+
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = "300"
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.public.id
 }
