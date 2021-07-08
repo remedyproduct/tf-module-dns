@@ -1,4 +1,4 @@
-resource "aws_acm_certificate" "public" {
+resource "aws_acm_certificate" "ssl" {
   count = var.request_ssl_certificate ? 1 : 0
 
   domain_name               = var.domain
@@ -13,7 +13,7 @@ resource "aws_acm_certificate" "public" {
 
 resource "aws_route53_record" "certificate_validation" {
   for_each = {
-    for option in aws_acm_certificate.public.domain_validation_options : option.domain_name => {
+    for option in aws_acm_certificate.ssl.domain_validation_options : option.domain_name => {
       name   = option.resource_record_name
       record = option.resource_record_value
       type   = option.resource_record_type

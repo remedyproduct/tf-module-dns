@@ -4,3 +4,11 @@ output "hosted_zone" {
     name_servers = aws_route53_zone.public.name_servers
   }
 }
+
+output "acm_certificate_arn" {
+   value = length(aws_acm_certificate.ssl) > 0 ? aws_acm_certificate.ssl[0].arn : null
+}
+
+output "domain" {
+  value = var.domain
+}
