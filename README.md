@@ -38,6 +38,8 @@ No Modules.
 
 | Name | Description |
 |------|-------------|
+| acm\_certificate\_arn | n/a |
+| domain | n/a |
 | hosted\_zone | n/a |
 
 <!--- END_TF_DOCS --->
