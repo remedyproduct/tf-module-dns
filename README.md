@@ -7,13 +7,13 @@ Route53 + Certificate Manager - Terraform Module
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.46.0 |
+| aws | >=4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.46.0 |
+| aws | >=4 |
 
 ## Modules
 
